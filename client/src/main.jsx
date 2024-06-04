@@ -4,11 +4,15 @@ import App from './App.jsx'
 import './index.css'
 import 'regenerator-runtime/runtime'
 import '@radix-ui/themes/styles.css';
-import { Theme } from '@radix-ui/themes';
+import {NextUIProvider} from '@nextui-org/react'
+import { Theme } from '@radix-ui/themes'
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Theme>
+    <NextUIProvider>
+      <Theme>
     <App />
     </Theme>
+    </NextUIProvider>
   </React.StrictMode>,
 )

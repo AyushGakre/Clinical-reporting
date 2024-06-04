@@ -1,8 +1,11 @@
 import React from 'react'
+import Fetchdetails from './Fetchdetails'
 
 const Dashboard = () => {
   return (
-    <div>Dashboard</div>
+    <div>
+      <Fetchdetails/>
+    </div>
   )
 }
 
