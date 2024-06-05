@@ -10,7 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@nextui-org/navbar": "^2.0.32",
     "@nextui-org/react": "^2.4.1",
+    "@nextui-org/system": "^2.2.1",
+    "@nextui-org/theme": "^2.2.5",
     "@radix-ui/themes": "^3.0.5",
     "axios": "^1.7.2",
     "framer-motion": "^11.2.10",
@@ -18,6 +21,7 @@
     "mic-recorder-to-mp3": "^2.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^5.2.1",
     "react-loader-spinner": "^6.1.6",
     "react-router-dom": "^6.23.1",
     "react-speech-recognition": "^3.10.0",

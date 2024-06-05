@@ -6,12 +6,13 @@ import 'regenerator-runtime/runtime'
 import '@radix-ui/themes/styles.css';
 import {NextUIProvider} from '@nextui-org/react'
 import { Theme } from '@radix-ui/themes'
+import Nav from './components/Navbar.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <NextUIProvider>
       <Theme>
-    <App />
+        <App />
     </Theme>
     </NextUIProvider>
   </React.StrictMode>,

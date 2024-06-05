@@ -5,9 +5,9 @@ import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognitio
 import { Button, TextArea } from "@radix-ui/themes";
 import Fetchdetails from "./Fetchdetails";
 import JoditEditor from 'jodit-react';
+import Nav from "./Navbar";
 
 const Dictaphone = () => {
-  const editor = useRef(null)
   const[text,setText] = useState('');
   const {
     transcript,
@@ -22,10 +22,7 @@ const Dictaphone = () => {
 
   return (
     <div>
-      <nav className=" border-b">
-        <h1 className=" text-lg font-medium">SRI JAYADEVA INSTITUTE OF CARDIOVASCULAR SCIENCES </h1>
-      </nav>
-
+      <Nav/>
     <p className=" text-xl mx-9">Microphone: {listening ? <h1 className=" text-green-500 font-bold">ON</h1> : <h1 className=" text-red-600 font-extrabold">OFF</h1>}</p>
     <div className="grid grid-cols-2 gap-4 mx-10">
     <div className=" space-x-3">
@@ -39,13 +36,7 @@ const Dictaphone = () => {
     }}>Save to database</Button>
     </div>
     <div>
-    {/* <JoditEditor
-			ref={editor}
-			value={transcript}
-			tabIndex={1} // tabIndex of textarea
-			
-		/> */}
-    <div>{transcript}</div>
+    <p>{transcript}</p>
     <p>This is stored: {text}</p>
     </div>
     </div>
