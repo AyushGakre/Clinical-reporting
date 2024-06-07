@@ -1,10 +1,11 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import {Card, CardHeader, CardBody, CardFooter,Image,Divider,Link} from "@nextui-org/react";
+import {Card, CardHeader, CardBody, CardFooter,Image,Divider,Link, Skeleton} from "@nextui-org/react";
 import {FaNotesMedical} from "react-icons/fa"
 import Nav from './Navbar';
 const Fetchdetails = () => {
     const[med,settranscript] = useState([]);
+  
     const medical = " Applying contenttypes.0001_initial... OK jnfknvkwjfnbjkvnkjbvnwkjThis version requires React 16.8 so that React hooks can be used. If you're used to version 2.x ofreact-speech-recognition or want to use an older version of React, you can see the old"
     const getresult = () =>{
         axios.get('http://localhost:3000/')
@@ -26,7 +27,7 @@ const Fetchdetails = () => {
      {med.map((item)=>{
         return(
             <div key={item._id}>
-            <Card className="max-w-[400px]">
+            <Card className="max-w-[400px]" >
     <CardHeader className="flex gap-3">
         <FaNotesMedical size="35"/>
         <div className="flex flex-col">

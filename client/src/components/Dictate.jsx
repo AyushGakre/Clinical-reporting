@@ -2,13 +2,14 @@ import { useEffect, useState, useRef } from "react"
 import axios from "axios"
 import 'regenerator-runtime'
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
-import { Button, TextArea } from "@radix-ui/themes";
-import Fetchdetails from "./Fetchdetails";
-import JoditEditor from 'jodit-react';
 import Nav from "./Navbar";
+import { Textarea ,Button} from "@nextui-org/react";
+
 
 const Dictaphone = () => {
-  const[text,setText] = useState('');
+  // const[text,setText] = useState('');
+  const[summary,setsummary] = useState([])
+  const text = `my name is ayush`
   const {
     transcript,
     listening,
@@ -19,25 +20,43 @@ const Dictaphone = () => {
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser doesn't support speech recognition.</span>;
   }
+ 
 
   return (
     <div>
       <Nav/>
-    <p className=" text-xl mx-9">Microphone: {listening ? <h1 className=" text-green-500 font-bold">ON</h1> : <h1 className=" text-red-600 font-extrabold">OFF</h1>}</p>
+    <p className=" text-xl mx-9">Microphone: {listening ? <p className=" text-green-500 font-bold">ON</p> : <p className=" text-red-600 font-extrabold">OFF</p>}</p>
     <div className="grid grid-cols-2 gap-4 mx-10">
-    <div className=" space-x-3">
-    <Button onClick={()=>SpeechRecognition.startListening({ continuous: true },{ language: 'en-IN'})}>Start</Button>
-    {/* <bu onClick={SpeechRecognition.stopListening}>Stop</bu> */}
-    <Button onClick={SpeechRecognition.stopListening}>stop</Button>
-    <Button onClick={resetTranscript}>Reset</Button>
-    <Button onClick={async()=>{
-      setText(transcript)
-      await axios.post('http://localhost:3000/text',{transcript})
-    }}>Save to database</Button>
+    <div className="">
+      <div className="flex justify-center gap-4">
+        <div>
+    <Button color="success" onClick={()=>SpeechRecognition.startListening({ continuous: true },{ language: 'en-IN'})}>Start</Button>
     </div>
     <div>
-    <p>{transcript}</p>
-    <p>This is stored: {text}</p>
+    <Button color="danger" onClick={SpeechRecognition.stopListening}>Stop</Button>
+    </div>
+    <div>
+    <Button  color="primary" variant="shadow" onClick={resetTranscript}>Reset</Button>
+    </div>
+    <div>
+    <Button  color="primary" variant="shadow" onClick={async()=>{
+      await axios.post('http://localhost:3000/text',{transcript})
+    }}>Save</Button>
+    </div>
+    </div>
+    <Textarea className=" max-w-md mt-5 ml-28" placeholder="speech to text" label="Transcript"  value={transcript} ></Textarea>
+    </div>
+    <div>
+      <Button
+      onClick={()=>{
+        axios.post('http://localhost:3000/generate',{chat: transcript})
+        .then(response=>{
+          console.log(response.data)
+          setsummary(response.data)
+        })
+      }}
+      >genAi</Button>
+      <pre >{summary}</pre>
     </div>
     </div>
   </div>

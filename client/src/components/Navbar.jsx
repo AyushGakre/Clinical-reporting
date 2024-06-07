@@ -4,7 +4,7 @@ import {Button, ButtonGroup} from "@nextui-org/button";
 import {RiSpeakFill} from 'react-icons/ri'
 const Nav = () => {
   return (
-    <Navbar>
+    <Navbar isBordered>
       <NavbarBrand>
         <Image 
         width={55}
