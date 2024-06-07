@@ -27,6 +27,7 @@ const Fetchdetails = () => {
      {med.map((item)=>{
         return(
             <div key={item._id}>
+              <Link href={`/${item._id}`}>
             <Card className="max-w-[400px]" >
     <CardHeader className="flex gap-3">
         <FaNotesMedical size="35"/>
@@ -46,6 +47,7 @@ const Fetchdetails = () => {
         </Link>
        </CardFooter>
     </Card>
+    </Link>
     </div>
         )
      })}

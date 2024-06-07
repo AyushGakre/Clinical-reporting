@@ -10,7 +10,8 @@ const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash"});
 router.post('/generate',async(req,res)=>{
     const {chat} = req.body
     //Generate patient report in key points in short: \n 
-    const prompt = `Generate patient medical report in key points in short: \n ${chat}`
+    // const prompt = `${chat}`
+    const prompt = `${chat} `
     const result = await model.generateContent(prompt);
     // const response = await result.response;
     // return response.text();
