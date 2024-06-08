@@ -14,6 +14,7 @@ db.once("open",()=>{
 })
 
 const hospitalSchema = new mongoose.Schema({
+    name :{type: String},
     transcript: {type:String},
     date: {type : Date, default : Date.now}
 })

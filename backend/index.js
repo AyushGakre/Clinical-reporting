@@ -19,7 +19,7 @@ app.use(genrativeai)
 app.use(fetchid)
 app.post('/translate',async(req,res)=>{
     // Check if the environment variable is set
-    const {text} = req.body
+    const {text,language} = req.body
 if (!process.env.CREDENTIALS) {
     console.error('Error: CREDENTIALS environment variable is not set');
     process.exit(1);
@@ -38,7 +38,7 @@ const translate = new Translate({
     projectId: CREDENTIALS.project_id
 });
 try {
-    const response = await translate.translate(`${text}`, 'kn');
+    const response = await translate.translate(`${text}`, `${language}`);
     res.send(response[0]);
 } catch (error) {
     console.log(`Error at translateText --> ${error}`);

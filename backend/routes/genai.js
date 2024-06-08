@@ -10,12 +10,15 @@ const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash"});
 router.post('/generate',async(req,res)=>{
     const {chat} = req.body
     //Generate patient report in key points in short: \n 
-    // const prompt = `${chat}`
-    const prompt = `${chat} `
+    const prompt = `with the reference of the \n${chat}\n give a medical report with all cardiovascular medical terms explained with there layman meaning in html`
     const result = await model.generateContent(prompt);
-    // const response = await result.response;
-    // return response.text();
-    res.send(result.response.text())
+    const response = result.response.text();
+    let formattedResponse = response.replace(/\*\*/g, '');
+  
+    // Replace all instances of '\n' with a space
+    formattedResponse = formattedResponse.replace(/\n/g, ' ');
+    res.send(`${response}`)
+
 
 })
 module.exports = router

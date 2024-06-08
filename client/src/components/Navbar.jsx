@@ -2,7 +2,9 @@ import React from 'react'
 import {  Navbar,   NavbarBrand,   NavbarContent,   NavbarItem,   NavbarMenuToggle,  NavbarMenu,  NavbarMenuItem,Image,Link} from "@nextui-org/react";
 import {Button, ButtonGroup} from "@nextui-org/button";
 import {RiSpeakFill} from 'react-icons/ri'
+import { SignedIn, SignedOut, SignInButton, useAuth, UserButton } from "@clerk/clerk-react";
 const Nav = () => {
+  const {isSignedIn} = useAuth();
   return (
     <Navbar isBordered>
       <NavbarBrand>
@@ -19,7 +21,7 @@ const Nav = () => {
         </NavbarItem>
         <NavbarItem>
           <Link color="foreground" href="/details">
-            Details
+            {isSignedIn ? "History" : null}
           </Link>
         </NavbarItem>
       </NavbarContent>
@@ -28,7 +30,12 @@ const Nav = () => {
           <Button as={Link} href="/dictate" isIconOnly color='warning'>
             <RiSpeakFill size={30}/>
           </Button>
-        </NavbarItem>
+          </NavbarItem>
+          <NavbarItem>
+          <SignedIn>
+        <UserButton />
+      </SignedIn>
+          </NavbarItem>
       </NavbarContent>
     </Navbar>
   )
