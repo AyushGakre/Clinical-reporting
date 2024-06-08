@@ -11,11 +11,14 @@
   "dependencies": {
     "@google-cloud/translate": "^8.3.0",
     "@google/generative-ai": "^0.12.0",
+    "@mapbox/node-pre-gyp": "^1.0.11",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
+    "docx-templates": "^4.13.0",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "mongoose": "^8.4.1",
+    "node-pre-gyp": "^0.17.0",
     "openai": "^4.47.3"
   }
 }

@@ -9,6 +9,8 @@ const { hospital } = require('./database')
 const PORT = 3000;
 const { Translate } = require("@google-cloud/translate").v2;
 require('dotenv').config();
+const docx = require('docx-templates')
+const fs = require('fs')
 
 app.use(express.json());
 app.use(cors())
@@ -45,6 +47,7 @@ try {
     return 0;
 }
 })
+
 
 app.listen(PORT, ()=>{
     console.log(`Server is listening at ${PORT}`)

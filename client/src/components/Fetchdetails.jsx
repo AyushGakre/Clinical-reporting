@@ -6,8 +6,6 @@ import Nav from './Navbar';
 const Fetchdetails = () => {
     const[med,settranscript] = useState([]);
     const[toogle,settoogle] = useState(true)
-  
-    const medical = " Applying contenttypes.0001_initial... OK jnfknvkwjfnbjkvnkjbvnwkjThis version requires React 16.8 so that React hooks can be used. If you're used to version 2.x ofreact-speech-recognition or want to use an older version of React, you can see the old"
     const getresult = () =>{
         axios.get('http://localhost:3000/')
         .then(response =>
@@ -19,9 +17,6 @@ const Fetchdetails = () => {
     }
     useEffect(()=>{
         getresult()
-        setTimeout(()=>{
-          settoogle(false)
-        },4000)
     },[])
 
   return (
@@ -48,7 +43,7 @@ const Fetchdetails = () => {
        <Divider/>
        <CardFooter>
         <Link isExternal showAnchorIcon>
-            Simplify medical prescription
+            Translate medical prescription
         </Link>
        </CardFooter>
     </Card>

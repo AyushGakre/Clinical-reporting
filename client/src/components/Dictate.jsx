@@ -7,9 +7,11 @@ import { Textarea ,Button,Input, toggle} from "@nextui-org/react";
 import SimpleMDE from "react-simplemde-editor";
 import "easymde/dist/easymde.min.css";
 import {Toaster,toast} from 'sonner'
+import { FaMicrophone } from "react-icons/fa6";
+import { IoIosMicOff } from "react-icons/io";
+import { MdStart } from "react-icons/md";
 
 const Dictaphone = () => {
-  const[toogle,settoogle] = useState(true)
 const[text,settext] = useState('')
   const[summary,setsummary] = useState('')
   const[name,setname] = useState('')
@@ -41,12 +43,12 @@ const[text,settext] = useState('')
 // },[])
 
   return (
-    <div className=" h-screen">
+    <div>
       <Nav/>
-      <p className="text-xl mx-9">
+      {/* <p className="text-xl mx-9">
         Microphone: {listening ? <span className="text-green-500 font-bold">ON</span> : <span className="text-red-600 font-extrabold">OFF</span>}
-      </p>
-    <div className="grid lg:grid-cols-2 gap-4 ">
+      </p> */}
+    <div className="grid lg:grid-cols-2 gap-4 mt-5">
       {/* grid 1 */}
     <div>
       <div className=" ml-20">
@@ -61,8 +63,9 @@ const[text,settext] = useState('')
             onChange={handletextchange}
           ></Textarea>
           <div className=" flex justify-center space-x-5 mt-6">
-          <Button color="success" onClick={()=>SpeechRecognition.startListening({ continuous: true },{ language: 'en-IN'})}>Start</Button>
-          <Button color="danger" onClick={SpeechRecognition.stopListening}>Stop</Button>
+          {listening ? <span className="text-green-500 font-bold text-xl font-sans">ON</span> : <span className="text-red-600 font-extrabold text-xl">OFF</span>}
+          <Button isIconOnly color="success" onClick={()=>SpeechRecognition.startListening({ continuous: true },{ language: 'en-IN'})}><FaMicrophone size={20}/></Button>
+          <Button isIconOnly color="danger" onClick={SpeechRecognition.stopListening}><IoIosMicOff size={20}/></Button>
     {/* <Button color="primary" isLoading>Genrating</Button> */}
           <Button
       onClick={()=>{
@@ -72,26 +75,20 @@ const[text,settext] = useState('')
           setsummary(response.data)
         })
       }}
-      >Proceed</Button>
+      >Summarise<MdStart size={20}/></Button>
       </div>
     </div>
     {/* grid 2 */}
     <div>
-          <h2 className=" text-2xl font-bold mb-2 text-center">Patient Report</h2>
-          {/* <Textarea
-            className="w-full p-2  border-gray-300 rounded mb-4"
-            rows="50"
-            placeholder="Plain text patient report fetched from database will be displayed here"
-            value={summary}
-          ></Textarea> */}
-          <SimpleMDE value={summary} className=" mx-8"/>
+          <h2 className=" text-2xl font-bold mb-2 ml-10">Patient Report</h2>
           <Toaster/>
-          <Button  color="primary" variant="shadow" className=" mt-14" onClick={async()=>{
+          <Button  color="primary" variant="shadow" className="ml-10 mb-4" onClick={async()=>{
       await axios.post('http://localhost:3000/text',{name,transcript : summary})
       .then(res =>
         toast.success(`Medical Report of ${name} \n Saved Succesfully`)
       )
     }}>Save</Button>
+          <SimpleMDE value={summary} className=" mx-8"/>
         </div>
 
     </div>

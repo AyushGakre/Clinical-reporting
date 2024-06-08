@@ -27,11 +27,12 @@ const Dashboard = () => {
         </Button>
       </div> 
       <div className="flex justify-center mt-12 mb-12">
-        <Button 
+        <Button
           className="bg-blue-500 text-white text-2xl px-16 py-8 transition-transform duration-500 hover:scale-110 shadow-lg" 
           auto 
           shadow 
           size="large"
+          
         >
           New Patient
         </Button>
