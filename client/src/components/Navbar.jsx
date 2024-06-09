@@ -11,7 +11,7 @@ const Nav = () => {
         <Image 
         width={55}
         src='https://content3.jdmagicbox.com/v2/comp/bangalore/35/080p5173435/catalogue/sri-jayadeva-institute-of-cardiovascular-science-and-research-jayanagar-9th-block-bangalore-cardiac-hospitals-wciy8ms5fo.jpg'/>
-        <p className="font-bold text-inherit">JayaDeva Hosptital</p>
+        <p className=" ml-2 font-bold text-inherit">Jayadeva Hosptital</p>
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem isActive>

@@ -3,7 +3,7 @@ import axios from "axios"
 import 'regenerator-runtime'
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import Nav from "./Navbar";
-import { Textarea ,Button,Input, toggle} from "@nextui-org/react";
+import { Textarea ,Button,Input,Spinner, ScrollShadow} from "@nextui-org/react";
 import SimpleMDE from "react-simplemde-editor";
 import "easymde/dist/easymde.min.css";
 import {Toaster,toast} from 'sonner'
@@ -67,8 +67,10 @@ const[text,settext] = useState('')
           <Button isIconOnly color="success" onClick={()=>SpeechRecognition.startListening({ continuous: true },{ language: 'en-IN'})}><FaMicrophone size={20}/></Button>
           <Button isIconOnly color="danger" onClick={SpeechRecognition.stopListening}><IoIosMicOff size={20}/></Button>
     {/* <Button color="primary" isLoading>Genrating</Button> */}
+    <Toaster />
           <Button
       onClick={()=>{
+        toast.info('Generating Layman Term ...')
         axios.post('http://localhost:3000/generate',{chat: text})
         .then(response=>{
           console.log(response.data)
@@ -76,6 +78,7 @@ const[text,settext] = useState('')
         })
       }}
       >Summarise<MdStart size={20}/></Button>
+      <Toaster richColors  />
       </div>
     </div>
     {/* grid 2 */}
@@ -88,7 +91,9 @@ const[text,settext] = useState('')
         toast.success(`Medical Report of ${name} \n Saved Succesfully`)
       )
     }}>Save</Button>
-          <SimpleMDE value={summary} className=" mx-8"/>
+    <ScrollShadow className="w-[600px] h-[600px] p-4">
+  <SimpleMDE value={summary} className=" mx-8"/>
+  </ScrollShadow>
         </div>
 
     </div>
