@@ -1,9 +1,8 @@
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const express = require('express');
-const {hospital} = require('../database');
 const router = express.Router();
-
-const genAI = new GoogleGenerativeAI("AIzaSyDzSK_VNYgRjKtocL29voSQdOuw44iMNVQ");
+require('dotenv').config();
+const genAI = new GoogleGenerativeAI(process.env.API_KEY);
 
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash"});
 

@@ -5,7 +5,6 @@ import Fetchdetails from "./components/Fetchdetails";
 import Translate from "./components/Translate";
 import Login from "./components/Login";
 import {SignedOut, SignIn, SignInButton, useAuth} from '@clerk/clerk-react'
-import Component from "./components/Mycomponent";
 export default function App(){
   const {isSignedIn} = useAuth()
   return (
@@ -21,7 +20,6 @@ export default function App(){
         isSignedIn ? <Navigate to='/dictate'/>:
         <SignedOut><SignIn path="/"/></SignedOut>
         }></Route>
-        <Route path="/pdf" element={<Component/>}></Route>
     </Routes>
     </BrowserRouter>
     </>

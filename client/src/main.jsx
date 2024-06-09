@@ -6,7 +6,6 @@ import 'regenerator-runtime/runtime'
 import '@radix-ui/themes/styles.css';
 import {NextUIProvider} from '@nextui-org/react'
 import { Theme } from '@radix-ui/themes'
-import Nav from './components/Navbar.jsx'
 import {ClerkProvider} from '@clerk/clerk-react'
 // Import your publishable key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
